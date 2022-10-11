@@ -14,6 +14,7 @@
 
             await TimerComponent.Instance.WaitAsync(1000);
 
+            //判断一秒钟之后的instanceId 是否等于现在的instanceId  防止多次对已经释放的session  再次释放
             if (self.InstanceId != instanceId)
             {
                 return;

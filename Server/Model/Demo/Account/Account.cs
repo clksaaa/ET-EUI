@@ -7,8 +7,6 @@
         BlackList = 1,
     }
     
-    [ComponentOf(typeof(Session))]
-
     public class Account : Entity,IAwake
     {
         public string AccountName;  //账户名
