@@ -32,6 +32,7 @@
         /// <param name="tokenKey"></param>
         private static async ETTask TimeOutRemoveKey(this TokenComponent self, long key, string tokenKey)
         {
+            //十分钟
             await TimerComponent.Instance.WaitAsync(600000);
 
             string onlineToken = self.Get(key);

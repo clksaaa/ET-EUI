@@ -94,6 +94,33 @@ namespace ET
                         await session.GetZoneDB().Save<Account>(account);
                     }
 
+                    //登录中心服的配置
+                    StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "LoginCenter");
+                    long loginCenterInstanceId = startSceneConfig.InstanceId;
+                     var  loginAccountResponse=(L2A_LoginAccountResponse)await ActorMessageSenderComponent.Instance.Call(loginCenterInstanceId, new A2L_LoginAccountRequest() { AccountId = account.Id });
+
+                     if (loginAccountResponse.Error!=ErrorCode.ERR_Success)
+                     {
+
+                         response.Error = loginAccountResponse.Error;
+                         reply();
+                         session.Disconnect().Coroutine();
+                         account?.Dispose();
+                         return;
+                     }
+                     
+                    //从账号连接管理组建中查找这个连接session
+                    long accountSessionInstanceId =session.DomainScene().GetComponent<AccountSessionsComponent>().Get(account.Id);
+
+                    Session otherSession =Game.EventSystem.Get(accountSessionInstanceId) as Session;
+                    //如果otherSession不等于null的话  说明这个账户已经登陆过了  需要发送断开链接的消息 并执行踢下线的操作
+                    otherSession?.Send(new A2C_Disconnect(){Error = 0});
+                    //断开连接
+                    otherSession?.Disconnect().Coroutine();
+                    //将新的session连接添加到 管理组件中
+                    session.DomainScene().GetComponent<AccountSessionsComponent>().Add(account.Id,session.InstanceId);
+                    session.AddComponent<AccountCheckOutTimeComponent, long>(account.Id);
+                    
                     //随机令牌
                     string ToKen = TimeHelper.ServerNow().ToString() + RandomHelper.RandomNumber(int.MinValue, int.MaxValue).ToString();
                     session.DomainScene().GetComponent<TokenComponent>().Remove(account.Id);
