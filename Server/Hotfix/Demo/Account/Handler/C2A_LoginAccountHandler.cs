@@ -33,6 +33,7 @@ namespace ET
                 return;
             }
 
+            //包含大写小写和数字  6-15位
             if (!Regex.IsMatch(request.AccountName.Trim(), @"^(?=.*[0-9].*)(?=.*[A-Z].*)(?=.*[a-z].*).{6,15}$"))
             {
                 response.Error = ErrorCode.ERR_AccountNameFormError;
@@ -84,6 +85,7 @@ namespace ET
                     }
                     else
                     {
+                        Log.Debug("创建新账户:"+request.AccountName);
                         // account             = session.GetComponent<AccountsZone>().AddChild<Account>();
                         account = session.AddChild<Account>();
                         account.AccountName = request.AccountName.Trim();
