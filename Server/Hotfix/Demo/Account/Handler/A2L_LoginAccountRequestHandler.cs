@@ -21,7 +21,7 @@ namespace ET
                 int zone = scene.GetComponent<LoginInfoRecordComponent>().Get(accountId);
                 //通过区服信息 获取账号所连接的具体Gate区服配置
                 StartSceneConfig gateConfig = RealmGateAddressHelper.GetGate(zone,accountId);
-                //发送Actor消息
+                //发送Actor消息 登录中心服踢在线玩家下线
                  var g2LDisconnectGateUnit = (G2L_DisconnectGateUnit) await MessageHelper.CallActor(gateConfig.InstanceId, new L2G_DisconnectGateUnit() { AccountId = accountId });
 
                  response.Error = g2LDisconnectGateUnit.Error;
