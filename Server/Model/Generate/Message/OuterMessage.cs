@@ -539,4 +539,202 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.ServerInfoProto)]
+	[ProtoContract]
+	public partial class ServerInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public int Id { get; set; }
+
+		[ProtoMember(2)]
+		public int Status { get; set; }
+
+		[ProtoMember(3)]
+		public string ServerName { get; set; }
+
+	}
+
+	[ResponseType(nameof(A2C_GetServerInfos))]
+	[Message(OuterOpcode.C2A_GetServerInfos)]
+	[ProtoContract]
+	public partial class C2A_GetServerInfos: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public long AccountId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_GetServerInfos)]
+	[ProtoContract]
+	public partial class A2C_GetServerInfos: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<ServerInfoProto> ServerInfosList = new List<ServerInfoProto>();
+
+	}
+
+	[Message(OuterOpcode.RoleInfoProto)]
+	[ProtoContract]
+	public partial class RoleInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public string Name { get; set; }
+
+		[ProtoMember(3)]
+		public int State { get; set; }
+
+		[ProtoMember(4)]
+		public long AccountId { get; set; }
+
+//上次登录时间
+		[ProtoMember(5)]
+		public long LastLoginTime { get; set; }
+
+//创建时间
+		[ProtoMember(6)]
+		public long CreateTime { get; set; }
+
+//区服Id
+		[ProtoMember(7)]
+		public int ServerId { get; set; }
+
+	}
+
+	[ResponseType(nameof(A2C_CreateRole))]
+	[Message(OuterOpcode.C2A_CreateRole)]
+	[ProtoContract]
+	public partial class C2A_CreateRole: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public long AccountId { get; set; }
+
+		[ProtoMember(3)]
+		public string Name { get; set; }
+
+////区服Id
+		[ProtoMember(4)]
+		public int ServerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_CreateRole)]
+	[ProtoContract]
+	public partial class A2C_CreateRole: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+//角色信息
+		[ProtoMember(1)]
+		public RoleInfoProto RoleInfo { get; set; }
+
+	}
+
+	[ResponseType(nameof(A2C_GetRoles))]
+	[Message(OuterOpcode.C2A_GetRoles)]
+	[ProtoContract]
+	public partial class C2A_GetRoles: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public long AccountId { get; set; }
+
+		[ProtoMember(3)]
+		public int ServerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_GetRoles)]
+	[ProtoContract]
+	public partial class A2C_GetRoles: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<RoleInfoProto> RoleInfo = new List<RoleInfoProto>();
+
+	}
+
+	[ResponseType(nameof(A2C_DeleteRole))]
+	[Message(OuterOpcode.C2A_DeleteRole)]
+	[ProtoContract]
+	public partial class C2A_DeleteRole: Object, IRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public string Token { get; set; }
+
+		[ProtoMember(2)]
+		public long AccountId { get; set; }
+
+		[ProtoMember(3)]
+		public long RoleInfoId { get; set; }
+
+		[ProtoMember(4)]
+		public int ServerId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_DeleteRole)]
+	[ProtoContract]
+	public partial class A2C_DeleteRole: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long DeletedRoleInfoId { get; set; }
+
+	}
+
 }
