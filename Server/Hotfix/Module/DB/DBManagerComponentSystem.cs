@@ -43,6 +43,8 @@ namespace ET
         }
         public static DBComponent GetZoneDB(this Session session)
         {
+            //这里只使用了一个数据库  配置中startzoneconfig中  id是1库       客户端的session的zoneId  正好是1  
+            //如果是多个数据库 可以配置一个  多个区服与单个数据库的对应关系
             return DBManagerComponent.Instance.GetZoneDB(session.DomainZone());
         }
     }

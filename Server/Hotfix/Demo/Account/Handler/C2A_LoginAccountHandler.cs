@@ -55,6 +55,7 @@ namespace ET
             {
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginAccount, request.AccountName.Trim().GetHashCode()))
                 {
+                    Log.Debug("session  Zone id："+session.DomainZone().ToString());
                     var accountInfoList = await session.GetZoneDB().Query<Account>(d => d.AccountName.Equals(request.AccountName.Trim()));
                     Account account = null;
                     //数据库 有账户信息
