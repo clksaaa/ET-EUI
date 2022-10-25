@@ -36,6 +36,18 @@ namespace ET
         public const int ERR_RoleNameSame = 200011; 
         ///游戏角色不存在
         public const int ERR_RoleNotExist = 200012; 
-        
+        ///连接Gate的令牌错误
+        public const int ERR_ConnectGateKeyError = 200013; 
+        ///请求的Scene错误
+        public const int ERR_RequestSceneTypeError = 200014; 
+        ///顶号登录
+        public const int ERR_OtherAccountLogin = 200016;
+        public const int ERR_SessionPlayerError = 200017; 
+        public const int ERR_NonePlayerError = 200018; 
+        public const int ERR_PlayerSessionError = 200019; 
+        public const int ERR_ReEnterGameError = 200020; 
+        public const int ERR_ReEnterGameError2 = 200021; 
+        public const int ERR_EnterGameError = 200022;
+        public const int ERR_SessionStateError = 200023;
     }
 }

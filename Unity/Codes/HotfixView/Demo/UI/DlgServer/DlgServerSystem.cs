@@ -22,6 +22,7 @@ namespace ET
 
         public static void ShowWindow(this DlgServer self, Entity contextData = null)
         {
+            //初始化列表
             //获取区服列表
             int count = self.ZoneScene().GetComponent<ServerInfosComponent>().ServerInfoList.Count;
             Log.Debug("区服数量 ："+count);

@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+<<<<<<< Updated upstream
     <LangVersion>9.0</LangVersion>
+=======
+    <LangVersion>8.0</LangVersion>
+>>>>>>> Stashed changes
     <_TargetFrameworkDirectories>non_empty_path_generated_by_unity.rider.package</_TargetFrameworkDirectories>
     <_FullFrameworkReferenceAssemblyPaths>non_empty_path_generated_by_unity.rider.package</_FullFrameworkReferenceAssemblyPaths>
     <DisableHandlePackageFileConflicts>true</DisableHandlePackageFileConflicts>
@@ -26,7 +30,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\Bin\Debug\Unity.Rider.Editor\</OutputPath>
+<<<<<<< Updated upstream
     <DefineConstants>UNITY_EDITOR</DefineConstants>
+=======
+    <DefineConstants></DefineConstants>
+>>>>>>> Stashed changes
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169,0649</NoWarn>
@@ -41,6 +49,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
      <None Include="Library\PackageCache\com.unity.mathematics@1.2.6\Tests\Unity.Mathematics.Tests.asmdef" />
      <Reference Include="UnityEngine">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -50,6 +59,17 @@
      </Reference>
      <Reference Include="UnityEditor">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+=======
+     <None Include="Library\PackageCache\com.unity.mathematics@1.1.0\Tests\Unity.Mathematics.Tests.asmdef" />
+     <Reference Include="UnityEngine">
+     <HintPath>D:\UnityHubs\2020.3.38f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.CoreModule">
+     <HintPath>D:\UnityHubs\2020.3.38f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor">
+     <HintPath>D:\UnityHubs\2020.3.38f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
+>>>>>>> Stashed changes
      </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

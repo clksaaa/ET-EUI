@@ -37,7 +37,7 @@ namespace ET
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRole,request.AccountId))
                 {
                     
-                    var roleInfos = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone())
+                    var roleInfos = await session.GetZoneDB()
                             .Query<RoleInfo>(d => d.AccountId == request.AccountId && d.ServerId == request.ServerId && d.State == (int)RoleInfoState.Normal);
 
                     if (roleInfos == null || roleInfos.Count == 0)

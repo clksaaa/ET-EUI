@@ -22,7 +22,7 @@
             self.Dispose();
             
         }
-        /*
+        
         public static async ETTask KickPlayer(Player player,bool isException = false)
         {
             if (player == null || player.IsDisposed)
@@ -64,7 +64,7 @@
                 player?.Dispose();
                 await TimerComponent.Instance.WaitAsync(300);
             }
-        }*/
+        }
         
     }
 }

@@ -37,8 +37,8 @@ namespace ET
             {
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.CreateRole, request.AccountId))
                 {
-                    Log.Debug(session.DomainZone().ToString()+"  "+request.ServerId);
-                    var roleInfos = await DBManagerComponent.Instance.GetZoneDB(request.ServerId)
+                    //Log.Debug(session.DomainZone().ToString()+"  "+request.ServerId);
+                    var roleInfos = await session.GetZoneDB()
                             .Query<RoleInfo>(d => d.Id == request.RoleInfoId && d.ServerId == request.ServerId);
 
                     if (roleInfos == null || roleInfos.Count <= 0)
@@ -53,7 +53,7 @@ namespace ET
 
                     roleInfo.State = (int)RoleInfoState.Freeze;
 
-                    await DBManagerComponent.Instance.GetZoneDB(request.ServerId).Save(roleInfo);
+                    await session.GetZoneDB().Save(roleInfo);
                     response.DeletedRoleInfoId = roleInfo.Id;
                     roleInfo?.Dispose();
 

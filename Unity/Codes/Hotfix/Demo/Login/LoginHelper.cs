@@ -80,7 +80,11 @@ namespace ET
             
             return ErrorCode.ERR_Success;
         }
-        
+        /// <summary>
+        /// 获取角色俩表列表
+        /// </summary>
+        /// <param name="zoneScene"></param>
+        /// <returns></returns>
         public static async ETTask<int> GetRoles(Scene zoneScene)
         {
             A2C_GetRoles a2CGetRoles = null;
@@ -232,7 +236,92 @@ namespace ET
             zoneScene.GetComponent<AccountInfoComponent>().RealmKey = a2CGetRealmKey.RealmKey;
             zoneScene.GetComponent<AccountInfoComponent>().RealmAddress = a2CGetRealmKey.RealmAddress;
             zoneScene.GetComponent<SessionComponent>().Session.Dispose();
-            await ETTask.CompletedTask;
+            
+            return ErrorCode.ERR_Success;
+        }
+         public static async ETTask<int> EnterGame(Scene zoneScene)
+        {
+            string realmAddress = zoneScene.GetComponent<AccountInfoComponent>().RealmAddress;
+            // 1. 连接Realm，获取分配的Gate
+            R2C_LoginRealm r2CLogin;
+
+            Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(realmAddress));
+            try
+            {
+                
+                r2CLogin = (R2C_LoginRealm) await session.Call(new C2R_LoginRealm() 
+                                                {    
+                                                    AccountId =  zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                                                    RealmTokenKey = zoneScene.GetComponent<AccountInfoComponent>().RealmKey 
+                                                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                session?.Dispose();
+                return ErrorCode.ERR_NetWorkError;
+            }
+            session?.Dispose();
+
+
+            if (r2CLogin.Error != ErrorCode.ERR_Success)
+            {
+                return r2CLogin.Error;
+            }
+            
+            Log.Warning($"GateAddress :  {r2CLogin.GateAddress}");
+            Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(r2CLogin.GateAddress));
+            gateSession.AddComponent<PingComponent>();
+            zoneScene.GetComponent<SessionComponent>().Session = gateSession;
+            
+            // 2. 开始连接Gate
+            long currentRoleId = zoneScene.GetComponent<RoleInfosComponent>().CurrentRoleId;
+            G2C_LoginGameGate g2CLoginGate = null;
+            try
+            {
+                long accountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId;
+                 g2CLoginGate = (G2C_LoginGameGate)await gateSession.Call(new C2G_LoginGameGate() { Key = r2CLogin.GateSessionKey, Account = accountId,RoleId = currentRoleId});
+                
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                zoneScene.GetComponent<SessionComponent>().Session.Dispose();
+                return ErrorCode.ERR_NetWorkError;
+            }
+            
+            if (g2CLoginGate.Error != ErrorCode.ERR_Success)
+            {
+                zoneScene.GetComponent<SessionComponent>().Session.Dispose();
+                return g2CLoginGate.Error;
+            }
+            Log.Debug("登陆gate成功!");
+
+            //3. 角色正式请求进入游戏逻辑服
+            G2C_EnterGame g2CEnterGame = null;
+            try
+            {
+   
+                g2CEnterGame = (G2C_EnterGame)await gateSession.Call(new C2G_EnterGame() { });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                zoneScene.GetComponent<SessionComponent>().Session.Dispose();
+                return ErrorCode.ERR_NetWorkError;
+            }
+
+            if (g2CEnterGame.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(g2CEnterGame.Error.ToString());
+                return g2CEnterGame.Error;
+            }
+            
+            Log.Debug("角色进入游戏成功!!!!");
+            zoneScene.GetComponent<PlayerComponent>().MyId = g2CEnterGame.MyId;
+            
+            await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneChangeFinish>();
+            
             return ErrorCode.ERR_Success;
         }
     }

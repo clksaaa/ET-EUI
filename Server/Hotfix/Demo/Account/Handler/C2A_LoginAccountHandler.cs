@@ -49,6 +49,16 @@ namespace ET
                 session.Disconnect().Coroutine();
                 return;
             }
+            //对连接成功的session 添加账户区域（管理子账号信息实体） 和角色区域（管理子物体的角色信息实体）
+            if (session.GetComponent<AccountsZone>() == null)
+            {
+                session.AddComponent<AccountsZone>();
+            }
+
+            if (session.GetComponent<RoleInfosZone>() == null)
+            {
+                session.AddComponent<RoleInfosZone>();
+            }
 
             //使用using关键字   语句块执行完毕后 会自动释放  调用SessionLockingComponent。dispose
             using (session.AddComponent<SessionLockingComponent>())
@@ -62,8 +72,8 @@ namespace ET
                     if (accountInfoList != null && accountInfoList.Count > 0)
                     {
                         account = accountInfoList[0];
-                        // session.GetComponent<AccountsZone>().AddChild(account);
-                        session.AddChild(account);
+                         session.GetComponent<AccountsZone>().AddChild(account);
+                        //session.AddChild(account);
 
                         if (account.AccountType == (int)AccountType.BlackList)
                         {

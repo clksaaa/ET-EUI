@@ -10,5 +10,6 @@
         WindowID_Helper,   //提示界面
         WindowID_Server,   //区服选择界面
         WindowID_Roles,   //角色管理界面
+        WindowID_Dlalog,   //弹窗
     }
 }
