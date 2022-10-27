@@ -309,17 +309,41 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Burst.Unsafe">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-     </Reference>
      <Reference Include="CommandLine">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\CommandLine.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     </Reference>
+     <Reference Include="log4netPlastic">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     </Reference>
+     <Reference Include="ICSharpCode.SharpZipLib">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+     </Reference>
+     <Reference Include="Newtonsoft.Json">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Newtonsoft.Json">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.StandardEvents">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Editor">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Antlr3.Runtime">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Unsafe">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Cecil.Mdb">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
@@ -327,8 +351,8 @@
      <Reference Include="Unity.Burst.Cecil.Rocks">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
-     <Reference Include="ICSharpCode.SharpZipLib">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+     <Reference Include="Unity.Analytics.Tracker">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -734,13 +758,13 @@
       <Project>{979dfe98-9199-94e5-7d3c-a2abc20e4793}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{ed943ac8-3d8f-7c17-157d-c4c31cbc811c}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{84d77f67-4616-0a38-4f03-16ab5e7769f7}</Project>
       <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{ed943ac8-3d8f-7c17-157d-c4c31cbc811c}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

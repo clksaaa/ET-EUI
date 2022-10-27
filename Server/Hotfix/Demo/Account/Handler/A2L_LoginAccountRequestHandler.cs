@@ -17,7 +17,7 @@ namespace ET
                     reply();
                     return;
                 }
-                //这里的scene是账号登录中心服的scene  通过accountId获取保存的zone  当前账号所登录的区服
+                //这里的scene是账号登录中心服的scene  通过accountId获取保存的zone  （当前账号所登录的区服）
                 int zone = scene.GetComponent<LoginInfoRecordComponent>().Get(accountId);
                 //通过区服信息 获取账号所连接的具体Gate区服配置
                 StartSceneConfig gateConfig = RealmGateAddressHelper.GetGate(zone,accountId);

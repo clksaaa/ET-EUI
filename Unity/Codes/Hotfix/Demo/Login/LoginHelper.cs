@@ -262,8 +262,7 @@ namespace ET
                 return ErrorCode.ERR_NetWorkError;
             }
             session?.Dispose();
-
-
+            
             if (r2CLogin.Error != ErrorCode.ERR_Success)
             {
                 return r2CLogin.Error;

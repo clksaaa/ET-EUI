@@ -206,6 +206,9 @@
      <Reference Include="UnityEngine.SubstanceModule">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubstanceModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.SubsystemsModule">
+     <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.SubsystemsModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.TLSModule">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.TLSModule.dll</HintPath>
      </Reference>
@@ -272,6 +275,9 @@
      <Reference Include="UnityEngine.VFXModule">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VFXModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEngine.VRModule">
+     <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VRModule.dll</HintPath>
+     </Reference>
      <Reference Include="UnityEngine.VehiclesModule">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.VehiclesModule.dll</HintPath>
      </Reference>
@@ -283,6 +289,9 @@
      </Reference>
      <Reference Include="UnityEngine.WindModule">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.WindModule.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEngine.XRModule">
+     <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.XRModule.dll</HintPath>
      </Reference>
      <Reference Include="UnityEditor">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.dll</HintPath>
@@ -335,17 +344,41 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Burst.Unsafe">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-     </Reference>
      <Reference Include="CommandLine">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\CommandLine.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     </Reference>
+     <Reference Include="log4netPlastic">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     </Reference>
+     <Reference Include="ICSharpCode.SharpZipLib">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+     </Reference>
+     <Reference Include="Newtonsoft.Json">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Newtonsoft.Json">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.StandardEvents">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Analytics.Editor">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Antlr3.Runtime">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.collab-proxy@1.15.18\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Unsafe">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Cecil.Mdb">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
@@ -353,8 +386,8 @@
      <Reference Include="Unity.Burst.Cecil.Rocks">
      <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
-     <Reference Include="ICSharpCode.SharpZipLib">
-     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Assets\Plugins\ICSharpCode.SharpZipLib.dll</HintPath>
+     <Reference Include="Unity.Analytics.Tracker">
+     <HintPath>E:\CLKProjects\UnityProjects\Study\ETStudy\ETSLGGame\ET-EUI\Unity\Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
      </Reference>
      <Reference Include="mscorlib">
      <HintPath>D:\UnityHubs\2021.3.6f1c1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>

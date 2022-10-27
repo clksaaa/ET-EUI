@@ -45,7 +45,7 @@ namespace ET
 					return;
 				}
 				
-				//通知登录中心服 记录本次登录的服务器Zone
+				//通知登录中心服 记录本次登录的Gate服务器Zone
 				StartSceneConfig loginCenterConfig = StartSceneConfigCategory.Instance.LoginCenterConfig;
 				L2G_AddLoginRecord l2ARoleLogin    = (L2G_AddLoginRecord) await MessageHelper.CallActor(loginCenterConfig.InstanceId, 
 																				new G2L_AddLoginRecord() { AccountId = request.Account, ServerId = scene.Zone});
@@ -78,12 +78,14 @@ namespace ET
 				}
 				else
 				{
+					//倒计时下线的组件 如果是顶号登录
 					player.RemoveComponent<PlayerOfflineOutTimeComponent>();
 				}
 				
 				session.AddComponent<SessionPlayerComponent>().PlayerId = player.Id;
 				session.GetComponent<SessionPlayerComponent>().PlayerInstanceId = player.InstanceId;
 				session.GetComponent<SessionPlayerComponent>().AccountId = request.Account;
+				//player.SessionInstanceId = session.InstanceId;
 				player.ClientSession = session;
 			}
 			reply();

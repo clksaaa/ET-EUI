@@ -43,6 +43,7 @@ namespace ET
     {
         public static void KickPlayer(this PlayerOfflineOutTimeComponent self)
         {
+            Log.Debug("PlayerOfflineOutTimeComponent父对象 PLayer："+self.GetParent<Player>().AccountId.ToString());
             DisconnectHelper.KickPlayer(self.GetParent<Player>()).Coroutine();
         }
     }

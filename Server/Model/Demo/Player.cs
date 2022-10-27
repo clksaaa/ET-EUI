@@ -4,8 +4,11 @@
 
 	public enum PlayerState
 	{
+		//断开连接
 		Disconnect,
+		//网关状态
 		Gate,
+		//进入游戏
 		Game,
 	}
 	

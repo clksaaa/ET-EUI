@@ -56,6 +56,9 @@ namespace ET
                     case SceneType.Realm:
                         this.Realms.Add(startSceneConfig.Zone,startSceneConfig);
                         break;
+                    case SceneType.LoginCenter:
+                        this.LoginCenterConfig = startSceneConfig;
+                        break;
                 }
             }
         }

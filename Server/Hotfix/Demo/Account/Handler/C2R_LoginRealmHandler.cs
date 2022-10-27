@@ -6,6 +6,7 @@ namespace ET
     {
         protected override async ETTask Run(Session session, C2R_LoginRealm request, R2C_LoginRealm response, Action reply)
         {
+
             if (  SceneType.Realm != session.DomainScene().SceneType )
             {
                 Log.Error($"请求的Scene错误，当前Scene为：{session.DomainScene().SceneType}");
@@ -54,7 +55,7 @@ namespace ET
                 response.GateSessionKey = g2RGetLoginKey.GateSessionKey;
                 response.GateAddress    = config.OuterIPPort.ToString();
                 reply();
-                
+                //只有在连接请求realm的时候才会请求一次  请求完毕就断开
                 session?.Disconnect().Coroutine();
             }
         }
