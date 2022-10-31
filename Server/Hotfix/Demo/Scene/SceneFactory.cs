@@ -40,14 +40,23 @@ namespace ET
                     scene.AddComponent<LocationComponent>();
                     break;
                 case SceneType.Account:
+                    //kcp
                     scene.AddComponent<NetKcpComponent, IPEndPoint, int>(startSceneConfig.OuterIPPort,
                         SessionStreamDispatcherType.SessionStreamDispatcherServerOuter);
+                    //Token管理
                     scene.AddComponent<TokenComponent>();
+                    //账号session管理
                     scene.AddComponent<AccountSessionsComponent>();
+                    //区服信息管理
                     scene.AddComponent<ServerInfoManagerComponent>();
                     break;
                 case SceneType.LoginCenter:
+                    //登录中心  管理记录已经登录账户 
                     scene.AddComponent<LoginInfoRecordComponent>();
+                    break;
+                case SceneType.UnitCache:
+                    //Unit缓存管理
+                    scene.AddComponent<UnitCacheComponent>();
                     break;
             }
 
