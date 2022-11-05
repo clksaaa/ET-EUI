@@ -21,6 +21,8 @@
 		public PlayerState PlayerState { get; set; }
 
 		public Session ClientSession { get; set; }
+		
+		public long ChatInfoInstanceId { get; set; }
 
 
 

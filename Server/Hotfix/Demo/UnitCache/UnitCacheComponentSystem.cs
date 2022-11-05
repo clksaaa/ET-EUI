@@ -47,6 +47,7 @@ namespace ET
         
         public static async ETTask<Entity> Get(this UnitCacheComponent self, long unitId,string key) 
         {
+            //如果没找到对应key的UnitCache 就添加一个新的
             if (!self.UnitCaches.TryGetValue(key,out UnitCache unitCache))
             {
                 unitCache = self.AddChild<UnitCache>();

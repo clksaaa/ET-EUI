@@ -880,4 +880,563 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.M2C_NoticeUnitNumeric)]
+	[ProtoContract]
+	public partial class M2C_NoticeUnitNumeric: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int NumericType { get; set; }
+
+		[ProtoMember(4)]
+		public long NewValue { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_TestUnitNumeric))]
+	[Message(OuterOpcode.C2M_TestUnitNumeric)]
+	[ProtoContract]
+	public partial class C2M_TestUnitNumeric: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_TestUnitNumeric)]
+	[ProtoContract]
+	public partial class M2C_TestUnitNumeric: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_AddAttributePoint))]
+	[Message(OuterOpcode.C2M_AddAttributePoint)]
+	[ProtoContract]
+	public partial class C2M_AddAttributePoint: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int NumericType { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AddAttributePoint)]
+	[ProtoContract]
+	public partial class M2C_AddAttributePoint: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_StartGameLevel))]
+	[Message(OuterOpcode.C2M_StartGameLevel)]
+	[ProtoContract]
+	public partial class C2M_StartGameLevel: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int LevelId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_StartGameLevel)]
+	[ProtoContract]
+	public partial class M2C_StartGameLevel: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_EndGameLevel))]
+	[Message(OuterOpcode.C2M_EndGameLevel)]
+	[ProtoContract]
+	public partial class C2M_EndGameLevel: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Round { get; set; }
+
+		[ProtoMember(3)]
+		public int BattleResult { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_EndGameLevel)]
+	[ProtoContract]
+	public partial class M2C_EndGameLevel: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_UpRoleLevel))]
+	[Message(OuterOpcode.C2M_UpRoleLevel)]
+	[ProtoContract]
+	public partial class C2M_UpRoleLevel: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_UpRoleLevel)]
+	[ProtoContract]
+	public partial class M2C_UpRoleLevel: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.ItemInfo)]
+	[ProtoContract]
+	public partial class ItemInfo: Object
+	{
+		[ProtoMember(1)]
+		public long ItemUid { get; set; }
+
+		[ProtoMember(2)]
+		public int ItemConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public int ItemQuality { get; set; }
+
+		[ProtoMember(4)]
+		public EquipInfoProto EquipInfo { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AllItemsList)]
+	[ProtoContract]
+	public partial class M2C_AllItemsList: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public List<ItemInfo> ItemInfoList = new List<ItemInfo>();
+
+		[ProtoMember(2)]
+		public int ContainerType { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_ItemUpdateOpInfo)]
+	[ProtoContract]
+	public partial class M2C_ItemUpdateOpInfo: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public ItemInfo ItemInfo { get; set; }
+
+		[ProtoMember(2)]
+		public int Op { get; set; }
+
+		[ProtoMember(3)]
+		public int ContainerType { get; set; }
+
+	}
+
+	[Message(OuterOpcode.AttributeEntryProto)]
+	[ProtoContract]
+	public partial class AttributeEntryProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public int Key { get; set; }
+
+		[ProtoMember(3)]
+		public long Value { get; set; }
+
+		[ProtoMember(4)]
+		public int EntryType { get; set; }
+
+	}
+
+	[Message(OuterOpcode.EquipInfoProto)]
+	[ProtoContract]
+	public partial class EquipInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public int Score { get; set; }
+
+		[ProtoMember(3)]
+		public List<AttributeEntryProto> AttributeEntryProtoList = new List<AttributeEntryProto>();
+
+	}
+
+	[ResponseType(nameof(M2C_EquipItem))]
+	[Message(OuterOpcode.C2M_EquipItem)]
+	[ProtoContract]
+	public partial class C2M_EquipItem: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long ItemUid { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_EquipItem)]
+	[ProtoContract]
+	public partial class M2C_EquipItem: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_UnloadEquipItem))]
+	[Message(OuterOpcode.C2M_UnloadEquipItem)]
+	[ProtoContract]
+	public partial class C2M_UnloadEquipItem: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int EquipPosition { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_UnloadEquipItem)]
+	[ProtoContract]
+	public partial class M2C_UnloadEquipItem: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_SellItem))]
+	[Message(OuterOpcode.C2M_SellItem)]
+	[ProtoContract]
+	public partial class C2M_SellItem: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long ItemUid { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_SellItem)]
+	[ProtoContract]
+	public partial class M2C_SellItem: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.ProductionProto)]
+	[ProtoContract]
+	public partial class ProductionProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(3)]
+		public long TargetTime { get; set; }
+
+		[ProtoMember(4)]
+		public long StartTime { get; set; }
+
+		[ProtoMember(5)]
+		public int ProductionState { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_StartProduction))]
+	[Message(OuterOpcode.C2M_StartProduction)]
+	[ProtoContract]
+	public partial class C2M_StartProduction: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int ConfigId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_StartProduction)]
+	[ProtoContract]
+	public partial class M2C_StartProduction: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(2)]
+		public ProductionProto ProductionProto { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_ReceiveProduction))]
+	[Message(OuterOpcode.C2M_ReceiveProduction)]
+	[ProtoContract]
+	public partial class C2M_ReceiveProduction: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long ProducitonId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_ReceiveProduction)]
+	[ProtoContract]
+	public partial class M2C_ReceiveProduction: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public ProductionProto ProductionProto { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AllProductionList)]
+	[ProtoContract]
+	public partial class M2C_AllProductionList: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public List<ProductionProto> ProductionProtoList = new List<ProductionProto>();
+
+	}
+
+	[Message(OuterOpcode.TaskInfoProto)]
+	[ProtoContract]
+	public partial class TaskInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(2)]
+		public int TaskState { get; set; }
+
+		[ProtoMember(3)]
+		public int TaskPogress { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_UpdateTaskInfo)]
+	[ProtoContract]
+	public partial class M2C_UpdateTaskInfo: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public TaskInfoProto TaskInfoProto { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AllTaskInfoList)]
+	[ProtoContract]
+	public partial class M2C_AllTaskInfoList: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public List<TaskInfoProto> TaskInfoProtoList = new List<TaskInfoProto>();
+
+	}
+
+	[ResponseType(nameof(M2C_ReceiveTaskReward))]
+	[Message(OuterOpcode.C2M_ReceiveTaskReward)]
+	[ProtoContract]
+	public partial class C2M_ReceiveTaskReward: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int TaskConfigId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_ReceiveTaskReward)]
+	[ProtoContract]
+	public partial class M2C_ReceiveTaskReward: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.RankInfoProto)]
+	[ProtoContract]
+	public partial class RankInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(4)]
+		public string Name { get; set; }
+
+		[ProtoMember(5)]
+		public int Count { get; set; }
+
+	}
+
+	[ResponseType(nameof(Rank2C_GetRanksInfo))]
+	[Message(OuterOpcode.C2Rank_GetRanksInfo)]
+	[ProtoContract]
+	public partial class C2Rank_GetRanksInfo: Object, IActorRankInfoRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Rank2C_GetRanksInfo)]
+	[ProtoContract]
+	public partial class Rank2C_GetRanksInfo: Object, IActorRankInfoResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public List<RankInfoProto> RankInfoProtoList = new List<RankInfoProto>();
+
+	}
+
+	[ResponseType(nameof(Chat2C_SendChatInfo))]
+	[Message(OuterOpcode.C2Chat_SendChatInfo)]
+	[ProtoContract]
+	public partial class C2Chat_SendChatInfo: Object, IActorChatInfoRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public string ChatMessage { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Chat2C_SendChatInfo)]
+	[ProtoContract]
+	public partial class Chat2C_SendChatInfo: Object, IActorChatInfoResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Chat2C_NoticeChatInfo)]
+	[ProtoContract]
+	public partial class Chat2C_NoticeChatInfo: Object, IActorMessage
+	{
+		[ProtoMember(1)]
+		public string Name { get; set; }
+
+		[ProtoMember(2)]
+		public string ChatMessage { get; set; }
+
+	}
+
 }

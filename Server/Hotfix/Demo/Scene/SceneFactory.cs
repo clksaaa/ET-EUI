@@ -58,6 +58,13 @@ namespace ET
                     //Unit缓存管理
                     scene.AddComponent<UnitCacheComponent>();
                     break;
+                // case SceneType.Rank:
+                //     await scene.AddComponent<RankInfosComponent>().LoadRankInfo();
+                //     break;
+                // case SceneType.ChatInfo:
+                //     scene.AddComponent<ChatInfoUnitsComponent>();
+                //     break;
+
             }
 
             return scene;

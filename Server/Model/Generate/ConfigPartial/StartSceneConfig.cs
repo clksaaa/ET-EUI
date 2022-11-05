@@ -31,6 +31,11 @@ namespace ET
         {
             return this.ZoneScenesByName[zone][name];
         }
+        /// <summary>
+        /// 实体所在缓存福的配置信息 （根据区服划分的 一个区服一个缓存服）
+        /// </summary>
+        /// <param name="unitId"></param>
+        /// <returns></returns>
         public StartSceneConfig GetUnitCacheConfig(long unitId)
         {
             //Unit所在区服

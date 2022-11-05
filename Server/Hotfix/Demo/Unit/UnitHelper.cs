@@ -3,9 +3,10 @@ using UnityEngine;
 
 namespace ET
 {
-    [FriendClass(typeof(Unit))]
-    [FriendClass(typeof(MoveComponent))]
-    [FriendClass(typeof(NumericComponent))]
+    [FriendClass(typeof (Unit))]
+    [FriendClass(typeof (MoveComponent))]
+    [FriendClass(typeof (NumericComponent))]
+    [FriendClass(typeof (GateMapComponent))]
     public static class UnitHelper
     {
         public static UnitInfo CreateUnitInfo(Unit unit)
@@ -48,25 +49,54 @@ namespace ET
 
             return unitInfo;
         }
-        
+
         // 获取看见unit的玩家，主要用于广播
         public static Dictionary<long, AOIEntity> GetBeSeePlayers(this Unit self)
         {
             return self.GetComponent<AOIEntity>().GetBeSeePlayers();
         }
-        
+
         public static void NoticeUnitAdd(Unit unit, Unit sendUnit)
         {
             M2C_CreateUnits createUnits = new M2C_CreateUnits();
             createUnits.Units.Add(CreateUnitInfo(sendUnit));
             MessageHelper.SendToClient(unit, createUnits);
         }
-        
+
         public static void NoticeUnitRemove(Unit unit, Unit sendUnit)
         {
             M2C_RemoveUnits removeUnits = new M2C_RemoveUnits();
             removeUnits.Units.Add(sendUnit.Id);
             MessageHelper.SendToClient(unit, removeUnits);
+        }
+
+        public static async ETTask<(bool, Unit)> LoadUnit(Player player)
+        {
+            GateMapComponent gateMapComponent = player.AddComponent<GateMapComponent>();
+            gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
+
+            //从缓存福获取信息
+            Unit unit = await UnitCacheHelper.GetUnitCache(gateMapComponent.Scene, player.UnitId);
+
+            bool isNewUnit = unit == null;
+            //为空说明是新玩家
+            if (isNewUnit)
+            {
+                unit = UnitFactory.Create(gateMapComponent.Scene, player.UnitId, UnitType.Player);
+
+                var roleInfos = await DBManagerComponent.Instance.GetZoneDB(player.DomainZone()).Query<RoleInfo>(d => d.Id == player.UnitId);
+                unit.AddComponent(roleInfos[0]);
+
+                UnitCacheHelper.AddOrUpdateUnitAllCache(unit);
+            }
+
+            return (isNewUnit, unit);
+        }
+
+        public static async ETTask InitUnit(Unit unit, bool isNew)
+        {
+            unit.GetComponent<NumericComponent>().SetNoEvent(NumericType.BattleRandomSeed, TimeHelper.ServerNow());
+            await ETTask.CompletedTask;
         }
     }
 }

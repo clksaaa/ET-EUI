@@ -27,6 +27,7 @@ namespace ET
         /// <returns></returns>
         public static async ETTask<Unit> GetUnitCache(Scene scene, long unitId)
         {
+            //找到unitId 所处的缓存服 
             long instanceId = StartSceneConfigCategory.Instance.GetUnitCacheConfig(unitId).InstanceId;
             Other2UnitCache_GetUnit message = new Other2UnitCache_GetUnit() { UnitId = unitId };
             UnitCache2Other_GetUnit queryUnit = (UnitCache2Other_GetUnit) await MessageHelper.CallActor(instanceId,message);

@@ -45,12 +45,15 @@ namespace ET
         public static async ETTask<Entity> Get(this UnitCache self, long unitId)
         {
             Entity entity = null;
+            //如果字典中不包含这个Entity 就从数据库中查找
             if (!self.CacheCompoenntsDictionary.TryGetValue(unitId,out entity))
             {
                 //从数据库中查询
                 entity = await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Query<Entity>(unitId, self.key);
+               //将查询到的Entity添加到UnitCache
                 if (entity != null)
                 {
+                    //保存和更新
                     self.AddOrUpdate(entity);
                 }
             }
