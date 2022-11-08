@@ -12,16 +12,16 @@ namespace ET
 
 		public static void RegisterUIEvent(this DlgMain self)
 		{
-		 
+		 self.View.E_RoleButton.AddListenerAsync(() => { return self.OnRoleButtonClickHandler();});
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
 		{
-			self.Refrech().Coroutine();
+			self.Refresh().Coroutine();
 		}
 
 		//刷新 等级 金币  经验
-		public static async ETTask Refrech(this DlgMain self)
+		public static async ETTask Refresh(this DlgMain self)
 		{
 			Unit unit = UnitHelper.GetMyUnitFromCurrentScene(self.ZoneScene().CurrentScene());
 			 NumericComponent numericComponent = unit.GetComponent<NumericComponent>();
@@ -31,6 +31,24 @@ namespace ET
 			 self.View.E_ExpText.SetText(numericComponent.GetAsInt((int)NumericType.Exp).ToString());
 			 
 			await ETTask.CompletedTask;
+		}
+
+		public static async ETTask OnRoleButtonClickHandler(this DlgMain self)
+		{
+			try
+			{
+				int error = await NumericHelper.TestUpdateNumeric(self.ZoneScene());
+				if (error!= ErrorCode.ERR_Success)
+				{
+					return;
+				}
+				Log.Debug("发送更新属性测试消息成功");
+
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+			}
 		}
 	}
 }

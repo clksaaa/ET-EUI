@@ -102,15 +102,27 @@ namespace ET
                         (bool isNewPlayer, Unit unit) = await UnitHelper.LoadUnit(player);
 
                         //unit.AddComponent<UnitGateComponent, long>(session.InstanceId);
+                        //不使用Session的INstanceId 是因为在顶号登录的时候 上一个用户的session连接会被释放到 导致InstanceId 为0   进而报错
+                        //Log.Warning($"session.InstanceId:{session.InstanceId} player.InstanceId: {player.InstanceId}");
+                        //要修改下 session的处理方式SessionStreamDispatcherServerInner
                         unit.AddComponent<UnitGateComponent, long>(player.InstanceId);
 
-                        player.ChatInfoInstanceId = await this.EnterWorldChatServer(unit); //登录聊天服
+                        //TODO 
+                        //player.ChatInfoInstanceId = await this.EnterWorldChatServer(unit); //登录聊天服
 
                         //玩家Unit上线后的初始化操作 玩家每次进入游戏后的初始化操作
                         await UnitHelper.InitUnit(unit, isNewPlayer);
                         response.MyId = unit.Id;
                         reply();
 
+                        // foreach (var dicinfo in StartSceneConfigCategory.Instance.ZoneScenesByName)
+                        // {
+                        //     foreach (var infokey in dicinfo.Value.Keys)
+                        //     {
+                        //         Log.Info($"场景 ZoneScene {dicinfo.Key}  名字 {infokey} 值  {dicinfo.Value[infokey]}");
+                        //     }
+                        // }
+                        //要切换到的场景配置  
                         StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Game");
                         await TransferHelper.Transfer(unit, startSceneConfig.InstanceId, startSceneConfig.Name);
 

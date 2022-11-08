@@ -23,6 +23,7 @@
             // location加锁
             long oldInstanceId = unit.InstanceId;
             await LocationProxyComponent.Instance.Lock(unit.Id, unit.InstanceId);
+            //发送消息
             M2M_UnitTransferResponse response = await ActorMessageSenderComponent.Instance.Call(sceneInstanceId, request) as M2M_UnitTransferResponse;
             await LocationProxyComponent.Instance.UnLock(unit.Id, oldInstanceId, response.NewInstanceId);
             unit.Dispose();

@@ -32,6 +32,11 @@
 	    public const int MaxMpPct = MaxMp * 10 + 3;
 	    public const int MaxMpFinalAdd = MaxMp * 10 + 4;
 	    public const int MaxMpFinalPct = MaxMp * 10 + 5;
+	    
+	    public const int Position = 1007;
+	    public const int Height = 1008;
+	    public const int Weight = 1009;
+
 
 	    
 	    public const int DamageValue = 1011;         //伤害

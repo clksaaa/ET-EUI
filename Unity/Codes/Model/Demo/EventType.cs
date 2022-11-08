@@ -94,6 +94,9 @@ namespace ET
             public Scene ZoneScene;
         }
 
+        /// <summary>
+        /// 通知显示层 加载资源实例化Unit
+        /// </summary>
         public struct AfterUnitCreate
         {
             public Unit Unit;

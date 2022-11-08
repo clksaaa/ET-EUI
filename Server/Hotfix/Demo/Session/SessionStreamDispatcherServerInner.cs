@@ -41,6 +41,24 @@ namespace ET
                         gateSession.Send(0, memoryStream);
                         return;
                     }
+                    //TODO 新增 处理转发 对Player InstanceId的拓展   防止顶号登录时 使用session 来转发消息  的一系列问题
+                    //（使用Session的INstanceId 是因为在顶号登录的时候 上一个用户的session连接会被释放到 导致session.InstanceId 为0   进而报错）
+                    if (entity is Player player)
+                    {
+                        // 发送给客户端
+                        if (player == null || player.IsDisposed)
+                        {
+                            return;
+                        }
+                        if (player.ClientSession == null || player.ClientSession.IsDisposed)
+                        {
+                            return;
+                        }
+                        
+                        memoryStream.Seek(Packet.OpcodeIndex, SeekOrigin.Begin);
+                        player.ClientSession.Send(0, memoryStream);
+                        return;
+                    }
                 }
 #endif
                         
