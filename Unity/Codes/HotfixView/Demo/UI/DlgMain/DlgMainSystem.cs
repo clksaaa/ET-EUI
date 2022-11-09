@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,9 @@ namespace ET
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
 		{
 			self.Refresh().Coroutine();
+			
+			 // self.View.E_BagImage.DOFade(0.1f, 1f).SetAutoKill();
+			 // self.View.E_RankImage.DOFade(0.1f, 1f).SetAutoKill();
 		}
 
 		//刷新 等级 金币  经验
